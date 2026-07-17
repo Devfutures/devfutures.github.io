@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USDA Market News — UX Case Study</title>
+<meta name="description" content="Redesigning how American farmers find market data. UX/UI case study for the USDA Market News app V2.">
+<style>
+  :root{
+    --green:#1b5e20; --green-soft:#2e7d32; --ink:#1f2421; --muted:#5b615d;
+    --bg:#fafaf8; --card:#ffffff; --line:#e4e6e2; --max:760px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.75;font-size:18px}
+  header.hero{position:relative}
+  header.hero img{width:100%;display:block;max-height:480px;object-fit:cover}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .wide{max-width:1000px;margin:0 auto;padding:0 24px}
+  h1{font-size:clamp(1.9rem,4vw,2.7rem);line-height:1.2;margin:48px 0 8px}
+  .sub{color:var(--muted);font-size:1.05rem;margin-bottom:32px}
+  h2{font-size:1.5rem;margin:72px 0 6px;color:var(--green)}
+  h2::after{content:"";display:block;width:44px;height:4px;background:var(--green);margin-top:10px;border-radius:2px}
+  h3{font-family:Helvetica,Arial,sans-serif;font-size:1.02rem;margin:36px 0 8px}
+  p{margin:18px 0}
+  ul{margin:18px 0 18px 22px}
+  li{margin:8px 0}
+  .snapshot{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 28px;margin:36px 0;font-family:Helvetica,Arial,sans-serif;font-size:.95rem;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+  .snapshot dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+  .snapshot dt{text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;color:var(--muted);margin-bottom:2px}
+  .snapshot dd{font-weight:700}
+  .snapshot .outcome{grid-column:1/-1;border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+  figure{margin:40px 0}
+  figure img{width:100%;display:block;border-radius:10px;border:1px solid var(--line)}
+  figcaption{font-family:Helvetica,Arial,sans-serif;font-size:.85rem;color:var(--muted);margin-top:10px;line-height:1.5}
+  .decision{background:var(--card);border-left:4px solid var(--green);border-radius:0 10px 10px 0;padding:20px 24px;margin:26px 0;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .decision h3{margin-top:0;color:var(--green-soft)}
+  .todo{background:#fff8e6;border:1px dashed #d5a021;border-radius:8px;padding:4px 10px;font-family:Helvetica,Arial,sans-serif;font-size:.85rem;color:#7a5b0e}
+  footer{margin:90px 0 60px;padding-top:28px;border-top:1px solid var(--line);font-family:Helvetica,Arial,sans-serif;font-size:.9rem;color:var(--muted)}
+  @media(max-width:600px){body{font-size:16.5px}}
+</style>
+</head>
+<body>
+<a href="../index.html" style="position:fixed;top:18px;left:18px;z-index:60;font-family:Helvetica,Arial,sans-serif;font-size:.85rem;font-weight:600;text-decoration:none;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border:1px solid #ddd;border-radius:999px;padding:8px 16px;color:#333;box-shadow:0 2px 10px rgba(0,0,0,.08)">&#8592; All work</a>
+
+
+<header class="hero">
+  <img src="images/hero.jpg" alt="USDA Market News — aerial view of farmland with tractor and USDA logo">
+</header>
+
+<div class="wrap">
+
+<h1>USDA Market News</h1>
+<p class="sub">Redesigning how American farmers find market data</p>
+
+<div class="snapshot">
+  <dl>
+    <div><dt>Role</dt><dd><span class="todo">[Your exact role]</span></dd></div>
+    <div><dt>Team</dt><dd><span class="todo">[Team size]</span></dd></div>
+    <div><dt>Timeline</dt><dd>12 weeks</dd></div>
+    <div><dt>Platform</dt><dd>iOS &amp; Android</dd></div>
+    <div class="outcome"><dt>Outcome</dt><dd>V2 shipped to the App Store &amp; Play Store in July 2022, expanding coverage from ~800 to ~1,500 market reports across 4 commodity areas. <span class="todo">[Add one usability or business metric]</span></dd></div>
+  </dl>
+</div>
+
+<h2>The problem</h2>
+<p>The USDA Market News app gives farmers and producers free, unbiased price and sales data — the information they use to decide when to sell, what to charge, and where to ship. Six months after MVP1 launched, the feedback was clear: the data was valuable, but finding it wasn't. Users were confused by the "Reports near me" flow, couldn't filter a growing catalog of reports, and had no way to reach archived data.</p>
+<p>At the same time, USDA wanted to expand the app from 800 Livestock, Poultry and Grain reports to nearly 1,500 — adding Cotton &amp; Tobacco, Dairy, and Specialty Crops. A navigation model that was already straining would have collapsed under double the content.</p>
+<p><strong>The brief:</strong> redesign Market News V2 to absorb 2× the content while making the most-used flows — finding, filtering, and saving reports — dramatically easier, within USDA branding and accessibility standards.</p>
+
+<h2>Understanding the users</h2>
+<p>Market News serves working farmers, many in their 50s and older, who are experts in their business but not in mobile apps. Two things from research shaped everything that followed:</p>
+<ul>
+  <li><strong>They think in commodities and locations, not app categories.</strong> Interviewees asked for "farm reports around me," dairy and tobacco coverage, and ways to reach specific months of archived data — <em>"Can I access Livestock in June 2018, for a specific location?"</em></li>
+  <li><strong>Scale breaks their workarounds.</strong> One user had ~50 favorited reports and no way to find a specific one. Another mentioned color-blindness issues with the existing UI — which pushed me to target AAA contrast ratios in the new design system, not just AA.</li>
+</ul>
+<p>Usability testing of MVP1 (4 participants; sessions run by the client's team, synthesis by me) confirmed the pattern: 2 of 4 got lost in "Reports near me" and couldn't find the filter, and participants struggled with the calendar/archive entry point, which sat too close to the "more options" button to tap reliably.</p>
+
+<h2>Auditing MVP1</h2>
+<figure>
+  <img src="images/mvp1-screens.jpg" alt="Five screens from the original MVP1 app showing dense lists, report details and calendar">
+  <figcaption>MVP1: dense unscannable lists, a buried calendar, and no way to narrow 800 reports.</figcaption>
+</figure>
+<p>I ran a heuristic evaluation of MVP1 and a competitive analysis of Cattle Market Mobile (the client's benchmark). Out of ten heuristic categories, three issues drove the redesign:</p>
+<ul>
+  <li><strong>No feedback during slow fetches.</strong> Reports could take 6+ seconds to load with no indicator — users assumed the app was broken.</li>
+  <li><strong>Recall over recognition.</strong> No recent searches, no filters — users had to scroll and remember instead of recognize and tap.</li>
+  <li><strong>Cluttered hierarchy.</strong> Tightly packed report tabs and inconsistent icons made mis-taps common and the app feel dated next to Cattle Market Mobile's clean, categorized navigation.</li>
+</ul>
+<figure>
+  <img src="images/competitive-screens.jpg" alt="Cattle Market Mobile app screens used for competitive analysis">
+  <figcaption>Cattle Market Mobile set the bar for categorized navigation and favorites — but lacked filtering and archives, the exact gaps V2 could own.</figcaption>
+</figure>
+
+<h2>Key design decisions</h2>
+
+<div class="decision">
+  <h3>1 · Filters as the backbone, not a feature</h3>
+  <p>Every major complaint — lost in "near me," 50 unfindable favorites, unreachable archives — was the same problem: no way to narrow a large set. Instead of bolting a filter button onto each screen, I made commodity preferences a first-class concept: users select their Commodity Areas and Market Types once, and that selection persistently scopes Home, Favorites, Subscriptions, and Archive search. A farmer who only cares about Cotton Forward Contracts never wades through Poultry auctions again.</p>
+</div>
+
+<div class="decision">
+  <h3>2 · Archive search by year → month → day, not an endless calendar</h3>
+  <p>Twenty years of reports were technically accessible but practically unreachable. I sketched multiple archive models — timeline scrub, calendar grid, faceted list — and landed on a stepped Year → Month → Report-date drill-down: it matches how farmers referenced archives in interviews ("Livestock in June 2018") and stays tappable for older users. The calendar-grid option failed exactly the tap-precision problem testing had flagged.</p>
+</div>
+
+<figure>
+  <img src="images/sketches.jpg" alt="Hand-drawn low fidelity sketches exploring archive search, favorites and report detail patterns">
+  <figcaption>Low-fi explorations of the archive and favorites models — the stepped drill-down (top right) won on tap size and mental-model fit.</figcaption>
+</figure>
+
+<figure>
+  <img src="images/ia.jpg" alt="Information architecture diagram showing onboarding flow into four report search paths">
+  <figcaption>The revised IA: onboarding ends in commodity personalization, which feeds four ways to reach a report — location, commodity, state, or archive date.</figcaption>
+</figure>
+
+<div class="decision">
+  <h3>3 · Green over blue: brand fit beat aesthetic preference</h3>
+  <p>I designed two complete visual directions. The blue direction was minimal, modern — and initially the favorite. I recommended against it: blue has no anchor in USDA's brand or in agriculture, and it's the default of every generic data-viz app, so it made a government agricultural tool look like a fintech dashboard. The green direction kept USDA's identity, and I built the design system around it with AAA/AA contrast ratios to address the color-blindness feedback directly.</p>
+</div>
+
+<figure>
+  <img src="images/final-blue.jpg" alt="Alternative blue visual direction across calendar, preferences and favorites screens">
+  <figcaption>The road not taken: the blue direction — cleaner at first glance, but off-brand for USDA and indistinct from generic data apps.</figcaption>
+</figure>
+
+<h2>The shipped product</h2>
+<figure>
+  <img src="images/final-green.jpg" alt="Final shipped V2 screens: calendar onboarding, commodity preferences, searchable favorites and report details">
+  <figcaption>Shipped V2: commodity preferences set during onboarding scope every list in the app; Favorites are searchable by name or SLUG ID; archives are two taps away.</figcaption>
+</figure>
+<ul>
+  <li>Onboarding now ends with commodity preference selection, so the app is personalized from first launch.</li>
+  <li>Favorites and Subscriptions are searchable and scoped by commodity — the "50 favorites" user can find any report in two taps.</li>
+  <li>Archive access moved from a buried calendar icon to a clear stepped search.</li>
+  <li>A unified design system (components, iconography, spacing, AAA contrast) replaced MVP1's inconsistent screens and gives USDA a scalable base for future commodity areas.</li>
+</ul>
+<p>V2 launched on iOS and Android in July 2022. <span class="todo">[Insert strongest evidence: post-launch retest results, store-rating delta, support-ticket change, or stakeholder quote]</span></p>
+
+<h2>What I'd push for next</h2>
+<figure>
+  <img src="images/exploration.jpg" alt="Self-initiated exploration concepts: map-based area selector, date-range chips and tabbed subscriptions">
+  <figcaption>Post-handoff explorations: a map selector with radius slider, quick date-range chips, and tabbed Subscriptions — my proposed MVP3 starting points.</figcaption>
+</figure>
+<p>After handoff, I kept exploring on my own time: a map-based area selector with a radius slider (replacing the confusing ZIP + radius input), quick date-range chips ("Last 15 days"), and tabbed Calendar / New Reports / Commodity views inside Subscriptions. These were cut from MVP2 by tech constraints, team bandwidth, and timelines — the right call then — but they're where I'd take MVP3, starting with the map selector, since location entry was the single most confusing interaction in testing.</p>
+<p><strong>What I'd do differently:</strong> push for testing with more than four participants earlier, and instrument the app at launch so V2's impact could be measured in task success rather than downloads.</p>
+
+<footer>
+  USDA Market News · UX/UI Case Study · Rahul <span class="todo">[surname / portfolio link]</span>
+</footer>
+
+</div>
+</body>
+</html>
