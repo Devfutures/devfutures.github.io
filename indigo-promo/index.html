@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IndiGo — Promo Code Experience · UX Case Study</title>
+<meta name="description" content="Designing the promo code and offers flow for the IndiGo flight booking app. UX/UI case study.">
+<style>
+  :root{
+    --blue:#001B94; --blue-soft:#2438b8; --ink:#1c1e26; --muted:#5a5e6b;
+    --bg:#fafbfd; --card:#ffffff; --line:#e3e6ee; --max:760px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg);line-height:1.75;font-size:18px}
+  header.hero{background:var(--blue);color:#fff;padding:90px 24px 70px}
+  header.hero .wrap{max-width:var(--max);margin:0 auto}
+  header.hero h1{font-size:clamp(1.9rem,4vw,2.7rem);line-height:1.2;margin:0 0 8px}
+  header.hero .sub{opacity:.85;font-size:1.05rem}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  h2{font-size:1.5rem;margin:72px 0 6px;color:var(--blue)}
+  h2::after{content:"";display:block;width:44px;height:4px;background:var(--blue);margin-top:10px;border-radius:2px}
+  h3{font-family:Helvetica,Arial,sans-serif;font-size:1.02rem;margin:36px 0 8px}
+  p{margin:18px 0}
+  ul{margin:18px 0 18px 22px}
+  li{margin:8px 0}
+  .snapshot{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 28px;margin:-40px auto 36px;max-width:var(--max);font-family:Helvetica,Arial,sans-serif;font-size:.95rem;box-shadow:0 6px 24px rgba(0,27,148,.10);position:relative}
+  .snapshot dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+  .snapshot dt{text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;color:var(--muted);margin-bottom:2px}
+  .snapshot dd{font-weight:700}
+  .snapshot .outcome{grid-column:1/-1;border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+  figure{margin:40px 0}
+  figure img{width:100%;display:block;border-radius:10px;border:1px solid var(--line)}
+  figcaption{font-family:Helvetica,Arial,sans-serif;font-size:.85rem;color:var(--muted);margin-top:10px;line-height:1.5}
+  .placeholder{display:flex;align-items:center;justify-content:center;min-height:280px;border:2px dashed #b6bdd6;border-radius:10px;background:#eef0f8;color:#5560a0;font-family:Helvetica,Arial,sans-serif;font-size:.9rem;text-align:center;padding:24px}
+  .decision{background:var(--card);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:20px 24px;margin:26px 0;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .decision h3{margin-top:0;color:var(--blue-soft)}
+  .todo{background:#fff8e6;border:1px dashed #d5a021;border-radius:8px;padding:4px 10px;font-family:Helvetica,Arial,sans-serif;font-size:.85rem;color:#7a5b0e}
+  footer{margin:90px 0 60px;padding-top:28px;border-top:1px solid var(--line);font-family:Helvetica,Arial,sans-serif;font-size:.9rem;color:var(--muted)}
+  @media(max-width:600px){body{font-size:16.5px}}
+</style>
+</head>
+<body>
+<a href="../index.html" style="position:fixed;top:18px;left:18px;z-index:60;font-family:Helvetica,Arial,sans-serif;font-size:.85rem;font-weight:600;text-decoration:none;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border:1px solid #ddd;border-radius:999px;padding:8px 16px;color:#333;box-shadow:0 2px 10px rgba(0,0,0,.08)">&#8592; All work</a>
+
+
+<header class="hero">
+  <div class="wrap">
+    <h1>IndiGo — Promo Code Experience</h1>
+    <p class="sub">Turning a coupon field into an offers discovery moment in India's largest airline app</p>
+  </div>
+</header>
+
+<div class="snapshot">
+  <dl>
+    <div><dt>Role</dt><dd><span class="todo">[Your exact role]</span></dd></div>
+    <div><dt>Team</dt><dd><span class="todo">[Team size]</span></dd></div>
+    <div><dt>Timeline</dt><dd><span class="todo">[Duration]</span></dd></div>
+    <div><dt>Platform</dt><dd>iOS &amp; Android</dd></div>
+    <div class="outcome"><dt>Outcome</dt><dd><span class="todo">[Headline metric — e.g., promo application success rate, offer engagement, drop-off change]</span></dd></div>
+  </dl>
+</div>
+
+<div class="wrap">
+
+<h2>The problem</h2>
+<p>Promo codes sit at a sensitive point in flight booking: the moment a price-conscious traveler decides whether the fare is good enough. In the existing experience, the promo field was a dead end — a blank input that assumed users already knew a code. Users who didn't have one got nothing; users who mistyped one got a failure with no way forward. <span class="todo">[Add the trigger: support tickets, drop-off data, or business push for wallet-partner offers?]</span></p>
+<p><strong>The brief:</strong> redesign the promo flow so that users without a code discover offers instead of hitting a wall, users with a code get a fast, forgiving path, and partner offers (Mobikwik, Paytm) get meaningful placement — without cluttering the booking form itself.</p>
+
+<h2>The flow at a glance</h2>
+<figure>
+  <div class="placeholder">images/full-flow.png<br>— full annotated user flow: entry → offers sheet → enter code → apply → error / applied / remove —</div>
+  <figcaption>The complete promo journey: one entry point, one sheet, and explicit states for empty, typed, error, applied, and removed.</figcaption>
+</figure>
+
+<h2>Key design decisions</h2>
+
+<div class="decision">
+  <h3>1 · The empty state sells, it doesn't apologize</h3>
+  <p>Most promo fields treat "no code" as the user's problem. I flipped it: tapping <em>Add promo code</em> opens a sheet where the input sits above a list of available offers — cashback and discount cards with the code, the eligibility terms, and a login CTA per offer. A user who arrived with nothing leaves with a code. The "Simply login to unlock your personalized promo code" line turns the same surface into a login incentive, which mattered because <span class="todo">[why did the business want logged-in bookings?]</span>.</p>
+</div>
+
+<figure>
+  <div class="placeholder">images/offers-sheet.png<br>— promo sheet with Mobikwik / Paytm offer cards, cashback &amp; % OFF badges —</div>
+  <figcaption>Offer cards carry the value proposition (cashback, 7% off, 13% off) as scannable edge badges, so users compare offers without reading terms first.</figcaption>
+</figure>
+
+<div class="decision">
+  <h3>2 · Errors keep the user in the flow</h3>
+  <p>An invalid code doesn't eject the user or clear the sheet. The message — "The code entered does not exist or is expired" — appears inline, in place, with the available offers still listed directly below. The recovery path is literally on the same screen: if your code failed, a working one is one tap away. This was the difference between an error state and an exit point.</p>
+</div>
+
+<figure>
+  <div class="placeholder">images/error-state.png<br>— error state: inline red message with offers still visible below —</div>
+  <figcaption>Failure and recovery share one screen: the error explains itself, and valid offers remain within thumb's reach.</figcaption>
+</figure>
+
+<div class="decision">
+  <h3>3 · Applied state lives on the booking form, with an exit</h3>
+  <p>After applying, the user lands back on the booking form with the code shown as a confirmed chip — "QUIK10 Applied ✓" — plus an explicit <em>Remove</em> action. Two reasons: trust (the discount is visible where the price decision happens, not buried in a sheet) and control (removing a code is as easy as adding one, so users experiment with offers instead of fearing a wrong choice).</p>
+</div>
+
+<figure>
+  <div class="placeholder">images/applied-state.png<br>— booking form with "QUIK10 Applied" chip and Remove action —</div>
+  <figcaption>The applied code is confirmed exactly where the fare decision happens — and reversible in one tap.</figcaption>
+</figure>
+
+<h2>Craft details</h2>
+<ul>
+  <li><strong>Edge badges for offer type.</strong> CASHBACK / 7% OFF / 13% OFF run vertically along each card's edge — color-coded, scannable, and out of the way of the offer content.</li>
+  <li><strong>One component, five states.</strong> The sheet handles empty, browsing, typed, error, and success with a single layout — less UI to learn, less to build.</li>
+  <li><strong>Copy that nudges without blocking.</strong> Login is encouraged ("unlock your personalized promo code") but never required to browse or apply public codes.</li>
+</ul>
+
+<h2>Outcome</h2>
+<p><span class="todo">[The most important section — add: promo application success rate before/after, % of users applying via offer cards vs. manual entry, login conversions from the sheet, or stakeholder/partner feedback. Even one number changes this case study's weight.]</span></p>
+
+<h2>Reflection</h2>
+<p><span class="todo">[One honest limitation — e.g., "Offer cards depend on partner content quality, which we didn't control" or "We didn't test with users on slow connections, where the sheet's offer images delay load" — plus what you'd do next.]</span></p>
+
+<footer>
+  IndiGo Promo Code Experience · UX/UI Case Study · Rahul <span class="todo">[surname / portfolio link]</span>
+</footer>
+
+</div>
+</body>
+</html>
