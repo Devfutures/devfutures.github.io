@@ -80,6 +80,18 @@
   .card-cta .arrow{transition:transform .2s ease;display:inline-block}
   .case-card:hover .card-cta .arrow{transform:translateX(6px)}
 
+  /* ---------- Beyond product gallery ---------- */
+  .gallery-intro{color:var(--muted);max-width:60ch;margin-bottom:var(--space-8)}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-6)}
+  .g-tile{text-decoration:none;display:flex;flex-direction:column;gap:10px}
+  .g-media{aspect-ratio:4/3;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);background:#eceae6}
+  .g-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+  .g-tile:hover .g-media img{transform:scale(1.04)}
+  .g-media.ph{display:flex;align-items:center;justify-content:center;border:2px dashed #c8c5bd;background:#f3f1ec;
+              color:#8a867c;font-size:.8rem;text-align:center;padding:16px;line-height:1.5}
+  .g-title{font-weight:600;font-size:.95rem}
+  .g-sub{font-size:.8rem;color:var(--muted);margin-top:-6px}
+
   /* ---------- About ---------- */
   .about{border-top:1px solid var(--line);margin-top:var(--space-16);padding-top:var(--space-16);
          display:grid;grid-template-columns:1fr;gap:var(--space-8)}
@@ -173,6 +185,43 @@
       <span class="card-cta">Read case study <span class="arrow">→</span></span>
     </div>
   </a>
+
+  <section class="reveal" id="beyond" aria-labelledby="beyond-h">
+    <p class="section-label" id="beyond-h">Beyond product</p>
+    <p class="gallery-intro">Brand, campaign, and visual work for Secuvy.ai, Porsche, NCTA, and others — the full set lives on <a href="https://dribbble.com/devfutures" target="_blank" rel="noopener">Dribbble</a>.</p>
+    <div class="gallery">
+      <a class="g-tile" href="https://dribbble.com/devfutures" target="_blank" rel="noopener">
+        <span class="g-media ph">gallery/indigo-rewards.png</span>
+        <span class="g-title">IndiGo Rewards Dashboard</span>
+        <span class="g-sub">Loyalty &amp; e-card experience</span>
+      </a>
+      <a class="g-tile" href="https://dribbble.com/devfutures" target="_blank" rel="noopener">
+        <span class="g-media ph">gallery/secuvy-brand.png</span>
+        <span class="g-title">Secuvy.ai Brand System</span>
+        <span class="g-sub">Logo, type &amp; social creatives</span>
+      </a>
+      <a class="g-tile" href="https://dribbble.com/devfutures" target="_blank" rel="noopener">
+        <span class="g-media ph">gallery/secuvy-web.png</span>
+        <span class="g-title">Secuvy.ai Marketing Site</span>
+        <span class="g-sub">Dark &amp; light web design</span>
+      </a>
+      <a class="g-tile" href="https://dribbble.com/devfutures" target="_blank" rel="noopener">
+        <span class="g-media ph">gallery/porsche-golf.png</span>
+        <span class="g-title">Porsche Golf Circle</span>
+        <span class="g-sub">Member app concept</span>
+      </a>
+      <a class="g-tile" href="https://dribbble.com/devfutures" target="_blank" rel="noopener">
+        <span class="g-media ph">gallery/10g-campaign.png</span>
+        <span class="g-title">10G — NCTA Campaign</span>
+        <span class="g-sub">Campaign &amp; web design</span>
+      </a>
+      <a class="g-tile" href="https://dribbble.com/devfutures" target="_blank" rel="noopener">
+        <span class="g-media ph">gallery/generative-art.png</span>
+        <span class="g-title">Generative Line Studies</span>
+        <span class="g-sub">Personal explorations</span>
+      </a>
+    </div>
+  </section>
 
   <section class="about reveal" id="about" aria-labelledby="about-h">
     <div>
